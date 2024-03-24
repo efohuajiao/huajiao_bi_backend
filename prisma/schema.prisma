@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model chart {
+  id          BigInt   @id @default(autoincrement())
+  goal        String   @db.Text
+  name        String   @db.VarChar(128)
+  chartData   String   @db.Text
+  chartType   String   @db.VarChar(128)
+  genChart    String   @db.Text
+  genResult   String   @db.Text
+  status      String   @default("wait") @db.VarChar(128)
+  execMessage String   @db.Text
+  userId      BigInt
+  createTime  DateTime @default(now())
+  updateTime  DateTime @default(now())
+  isDelete    Int      @default(0) @db.TinyInt
+}
+
+model user {
+  id           BigInt   @id @default(autoincrement())
+  userAccount  String   @db.VarChar(256)
+  userPassword String   @db.VarChar(512)
+  userName     String   @db.VarChar(256)
+  userAvatar   String   @db.VarChar(1000)
+  userRole     String   @default("user") @db.VarChar(256)
+  createTime   DateTime @default(now())
+  updateTime   DateTime @default(now())
+  isDelete     Int      @default(0) @db.TinyInt
+}
