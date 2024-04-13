@@ -1,3 +1,3 @@
 export const jwtConstants = {
-  secert: 'To Be Best 🙂!!! Trust you!! TN!!',
+  secert: 'To Be Better 🙂!!! Trust you!! TN!!',
 };

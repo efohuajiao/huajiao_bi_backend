@@ -1,6 +1,10 @@
 export interface SignInDto {
   userAccount: string;
-  userPassword: string;
+  userPwd: string;
 }
 
-export interface ResgiterDto {}
+export interface ResgiterDto {
+  userAccount: string;
+  userPwd: string;
+  confirmPwd: string;
+}

@@ -6,7 +6,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/auth.guard';
 
 @Module({
-  imports: [UserModule, ChartModule, AuthModule],
+  imports: [ChartModule, AuthModule],
   providers: [
     {
       provide: APP_GUARD,

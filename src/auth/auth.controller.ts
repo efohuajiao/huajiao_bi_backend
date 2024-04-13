@@ -10,6 +10,7 @@ import {
 import { AuthService } from './auth.service';
 import { UserService } from 'src/user/user.service';
 import { Public } from 'src/skipAuth';
+import { SignInDto, ResgiterDto } from './auth.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -21,20 +22,23 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Public() // 使用自定义的装饰器将其变成公共接口
   @Post('/login')
-  signIn(@Body() signInDto: Record<string, any>) {
-    return this.authService.signIn(
-      signInDto.params.userAccount,
-      signInDto.params.userPassword,
-    );
+  signIn(@Body() signInDto: SignInDto) {
+    const { userAccount, userPwd } = signInDto;
+    return this.authService.signIn(userAccount, userPwd);
   }
 
   @Post('/register')
-  register(@Body() registerDto) {
-    return this.authService.register();
+  register(@Body() registerDto: ResgiterDto) {
+    const { userAccount, userPwd, confirmPwd } = registerDto;
+    return this.authService.register(userAccount, userPwd, confirmPwd);
   }
 
   @Get('/profile')
-  getProfile(@Request() request) {
-    return request.user;
+  getProfile(@Request() req) {
+    return {
+      code: 0,
+      msg: '获取成功',
+      data: req.user,
+    };
   }
 }

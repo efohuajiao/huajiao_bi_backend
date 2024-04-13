@@ -30,6 +30,7 @@ export class AuthGuard implements CanActivate {
     ]);
     // 如果该接口是公共的，返回true
     if (isPublic) return true;
+
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
     if (!token) throw new UnauthorizedException();
