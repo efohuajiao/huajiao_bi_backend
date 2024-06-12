@@ -18,8 +18,8 @@ export class AuthService {
    * @returns token
    */
   async signIn(userAccount: string, userPwd: string) {
-    const user = await this.findOne(userAccount);
     console.error(userAccount, userPwd);
+    const user = await this.findOne(userAccount);
 
     if (user.userPassword != userPwd) {
       return { code: 1, msg: '密码错误' }; // 密码不正确，抛出未授权错误

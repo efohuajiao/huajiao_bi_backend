@@ -6,8 +6,7 @@ export class CreateDto {
 
   @ApiProperty({
     description: '上传的文件',
-    example:
-      'D:/fronted/React_project/huajiao_bi/huajiao_bi_backend/src/chart/file/data.xlsx',
+    example: 'D:/Programing/frontend/React/huajiao_BI/data.xlsx',
   })
   readonly chartData: string;
 
@@ -23,4 +22,13 @@ export interface EditDto {
   readonly goal: string;
   readonly chartData: string;
   readonly chartType: string;
+}
+
+export interface ChartData {
+  readonly goal: string;
+  readonly name: string;
+  readonly chartData: string;
+  readonly chartType: string;
+  readonly genChart: string;
+  readonly userId: number;
 }

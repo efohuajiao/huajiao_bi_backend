@@ -4,9 +4,11 @@ import { ChartModule } from './chart/chart.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/auth.guard';
+import { AiGenerateModule } from './ai-generate/ai-generate.module';
+import { AiGenerateModule } from './ai-generate/ai-generate.module';
 
 @Module({
-  imports: [ChartModule, AuthModule],
+  imports: [ChartModule, AuthModule, AiGenerateModule],
   providers: [
     {
       provide: APP_GUARD,
